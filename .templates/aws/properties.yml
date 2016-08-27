@@ -7,6 +7,7 @@ meta:
     ssh_key_name: (( param "What AWS keypair should be used for the vcap user?" ))
     private_key: (( param "What private key will be used for establishing the ssh_tunnel (bosh-init only)?" ))
     default_sgs: (( param "What security groups should VMs be placed in, if none are specified in the deployment manifest?" ))
+  shield_public_key: (( param "Specify the SSH public key from this environment's SHIELD daemon" ))
 
 cloud_provider:
   mbus: (( concat "https://mbus:mbus-password@" jobs.bosh.networks.default.static_ips.0 ":6868" ))
@@ -39,3 +40,6 @@ properties:
   director:
     cpi_job: aws_cpi
   aws: (( grab cloud_provider.properties.aws ))
+  shield:
+    agent:
+      daemon_public_key: (( grab meta.shield_public_key ))

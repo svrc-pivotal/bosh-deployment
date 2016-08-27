@@ -12,7 +12,7 @@ meta:
       vm_folder: (( param "What folder path should VMs be stored in?" ))
       clusters: (( param "What clusters should BOSH deploy VMs to?" ))
     address: (( param "What is the address of your vCenter Server?" ))
-
+  shield_public_key: (( param "Specify the SSH public key from this environment's SHIELD daemon" ))
 
 cloud_provider:
   mbus: (( concat "https://mbus:mbus-password@" jobs.bosh.networks.default.static_ips.0 ":6868" ))
@@ -37,3 +37,6 @@ properties:
   director:
     cpi_job: vsphere_cpi
   vcenter: (( grab cloud_provider.properties.vcenter ))
+  shield:
+    agent:
+      daemon_public_key: (( grab meta.shield_public_key ))

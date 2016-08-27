@@ -6,3 +6,7 @@ jobs:
   templates:
   - name: vsphere_cpi
     release: bosh-vsphere-cpi
+  - name: shield-agent
+    release: shield
+  - name: agent-pgtools
+    release: shield

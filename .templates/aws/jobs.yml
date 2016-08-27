@@ -8,6 +8,10 @@ jobs:
     release: bosh-aws-cpi
   - name: registry
     release: bosh
+  - name: shield-agent
+    release: shield
+  - name: agent-pgtools
+    release: shield
 
 properties:
   registry:

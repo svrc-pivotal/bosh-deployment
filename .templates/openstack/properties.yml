@@ -5,6 +5,7 @@ meta:
     tenant: (( param "Please supply an Openstack tenant name" ))
     username: (( param "Please supply an Openstack user name" ))
     api_key: (( param "Please supply an Openstack password" ))
+  shield_public_key: (( param "Specify the SSH public key from this environment's SHIELD daemon" ))
 
 cloud_provider:
   mbus: (( concat "https://mbus:mbus-password@" jobs.bosh.networks.default.static_ips.0 ":6868" ))
@@ -39,3 +40,6 @@ properties:
   director:
     cpi_job: openstack_cpi
   openstack: (( grab cloud_provider.properties.openstack ))
+  shield:
+    agent:
+      daemon_public_key: (( grab meta.shield_public_key ))
